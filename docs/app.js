@@ -23,6 +23,14 @@ var LazyImageLoader = {
 document.addEventListener("DOMContentLoaded", function() {
   var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
   LazyImageLoader.apply(lazyImages);
+
+  var body = document.getElementsByTagName("body");
+  var img = document.createElement("img");
+  img.setAttribute("src", "dummy.svg");
+  img.setAttribute("data-src", "real.svg");
+  // img.setAttribute("class", "lazy");
+  LazyImageLoader.apply([img]);
+  body[0].appendChild(img);
 });
 
 // if ("IntersectionObserver" in window) {
